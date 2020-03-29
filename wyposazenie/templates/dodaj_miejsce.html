@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">{{legend}}</legend>
+<!------------------------------------------------->
+<!--            for form.name                    -->
+                <div class="form-group">
+                    {{ form.name.label(class="form-control-label") }}
+                    {% if form.name.errors %}
+<!--            if there is a error. -->
+                        {{ form.name(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+<!--            else if there aren't any errors. -->
+                        {{ form.name(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+<!------------------------------------------------->
+<!--            for form.description             -->
+                <div class="form-group">
+                    {{ form.description.label(class="form-control-label") }}
+                    {% if form.description.errors %}
+<!--            if there is a error. -->
+                        {{ form.description(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.description.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+<!--            else if there aren't any errors. -->
+                        {{ form.description(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+<!------------------------------------------------->
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+    <div >
+        <small class="text muted">
+            Already Have An account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+        </small>
+    </div>
+
+{%  endblock content %}
