@@ -10,16 +10,16 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 
     {% if title %}
-    <title> Wyposazenie - {{ title }} </title>
+    <title> BoxTrack Blog - {{ title }} </title>
     {% else %}
-    <title> Wyposazenie </title>
+    <title> Suitcase Blog </title>
     {% endif %}
 </head>
 <body>
 <header class="site-header">
     <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-            <a class="navbar-brand mr-4" href="/">Wyposazenie</a>
+            <a class="navbar-brand mr-4" href="/">Wyposażenie</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
                     aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -27,17 +27,15 @@
             <div class="collapse navbar-collapse" id="navbarToggle">
                 <div class="navbar-nav mr-auto">
                     <!--              <a class="nav-item nav-link" href="/">Home</a>-->
-                    <!--lepiej stosować url-for ale jesli nie ma tej strony to wywali blad                -->
+                    <!--lepiej stosowac url-for ale jesli nie ma tej strony to wywali blad                -->
                     <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
-                    <!--              <a class="nav-item nav-link" href="/about">About</a>-->
-                    <a class="nav-item nav-link" href="{{ url_for('about')}}">About</a>
                 </div>
-                <!-- Navbar Right Side -->
+                <!-- Navbar Prawa Strona Menu -->
                 <div class="navbar-nav">
-                    <!--              <a class="nav-item nav-link" href="/login">Login</a>-->
-                    <!--              <a class="nav-item nav-link" href="/register">Register</a>-->
-                    <a class="nav-item nav-link" href="/pokaz_miejsca">Miejsca</a>
-
+                    <a class="nav-item nav-link" href="/pokazmiejsca">Miejsca</a>
+                </div>
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="/pokazosoby">Osoby</a>
                 </div>
             </div>
         </div>
@@ -62,11 +60,10 @@
                 <h3>Our Sidebar</h3>
                 <p class='text-muted'>Panel.
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-light">Latest Posts</li>
-                    <li class="list-group-item list-group-item-light">Announcements</li>
+                    <li class="list-group-item list-group-item-light">Link1</li>
+                    <li class="list-group-item list-group-item-light">Link2</li>
                     <li class="list-group-item list-group-item-light">Calendars</li>
                     <li class="list-group-item list-group-item-light">etc</li>
-                    <a class="nav-item nav-link" href="/addperson">Add person</a>
                 </ul>
                 </p>
             </div>

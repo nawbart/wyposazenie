@@ -1,17 +1,20 @@
 {% extends "layout.html" %}
 {% block content %}
-<legend class="border-bottom mb-4">Wszystkie miejsca</legend>
+<legend class="border-bottom mb-4">Miejsca:</legend>
 <div>
     <small class="text muted">
-        Add<a class="ml-2" href="#">Nowe miejsce</a>
+
     </small>
 </div>
 {% for miejsce in miejsca %}
 <article class="media content-section">
     <div class="media-body">
         <div class="article-metadata">
-            <small class="text-muted">{{ miejsce.nazwa }}</small>
+            <a class="mr-2" href="#">id:{{miejsce.id_miejsce}}, </a>
+            <a class="mr-2" href="#">nazwa: {{miejsce.nazwa}}</a>
+<!--            <small class="text-muted">{{ miejsce.nazwa }}</small>-->
         </div>
+<!--        <h4><a class="article-title" href="#">{{ miejsce.nazwa }}</a></h4>-->
         <p class="article-content">{{ miejsce.opis }}</p>
     </div>
 </article>
