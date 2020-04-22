@@ -1,9 +1,24 @@
 RAPORT 2
 
+CO ZROBIŁEM:
 
+1. Utworzenie pliku startowego run.py
+2. Utworzenie modelu obiektowego bazy danych w pliku models.py, SQLAlchemy
+3. Utworzenie pliku routes.py. Za jepo pomocą sterujemy przechodzimy do poszczególnych podstron.
+4. W wyposazenie/templates umieściłem pliki html, takie jak: about.html, dodaj_miejsce.html, pokaz_miejsca.html, pokaz_miejsce.html, pokaz_osoby.html
+   w których będzie realizowane wyświatlnie potrzebnych informacji. W pliku layout.html umieszczona jest część wspólna dla wyświetlanych stron 
+5. W katalogu wyposazenie/static umieściłem plik main.css
+6. Wygenerowanie pliku (pip freeze > requirements.txt) requirements w którym zawarta jest informacja o użytych modułach.
 
+CO PLANUJE ZROBIĆ:
 
-RAPORT 1
+1. W kolejnych krokach planuje wykonanie pliku forms.py, który obsługuje wtforms.
+2. Bedę rozszerzał katalog templates o dodatkowe pliki html, w których realizowana będzie dalsza funkcjonalność programu i stowarzyszony plik routes.py,
+   który będzie obsługiwał/zarządzał te pliki.
+
+========================================================================
+
+RAPORT 1 (założenia)
 
 Aplikacja do utrzymywania informacji o sprzęcie przekazanym pracownikom.
 Zastosowane technologie:
