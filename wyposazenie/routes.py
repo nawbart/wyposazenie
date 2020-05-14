@@ -27,12 +27,18 @@ def pokaz_miejsce(id_miejsce):
 # CREATE, dodaj miejsce
 @app.route("/miejsce/new", methods=['GET', 'POST'])
 def dodajmiejsce():
+    #tworze obiekt form ktory pochodzi z klasy forms.dadajMiejsceForm
     form = DodajMiejsceForm()
+    #jesli nacisnieto przycisk submit
     if form.validate_on_submit():
+        #tworze obiekt wiersz_miejsce za pomoca konstruktora Miejsce z models
         wiersz_miejsce = Miejsca(nazwa=form.nazwa.data, opis=form.opis.data)
+        #dwie ponizsze linie to robie takiego inserta za pomoca sqlalchemy
         db.session.add(wiersz_miejsce)
         db.session.commit()
+        # pokazuje komunikat jesli wszystko bedzie ok
         flash(f'Dodano nowy wiersz do tabeli bazy danych.')
+        # przechodze do strony pokaz miejsca gdzie widac wszstkie miejsca
         return redirect(url_for('pokazmiejsca'))
     return render_template('dodaj_miejsce.html', title='Dodaj miejsce', form=form,
                            legend="Dodaj miejce")
