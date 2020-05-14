@@ -1,7 +1,7 @@
 from wyposazenie import db
 
 #modeluje strukture bazy danych w sqlAlchemy, to jest potrzebne przy stworzeniu bazy danych
-#oraz przy interakcji z bazą danych, czyli w zapytaniach (np.select, update, insert)
+#oraz przy pracy z bazą danych, czyli w zapytaniach (np.select, update, insert)
 
 class Miejsca(db.Model):
     #na sztywno wymuszam,zeby tablica nazywala się MIEJSCA
