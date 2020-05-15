@@ -3,18 +3,19 @@
 <legend class="border-bottom mb-4">Osoby:</legend>
 <div>
     <small class="text muted">
-
+        <a class="ml-2" href="{{ url_for('dodajosobe') }}">Dodaj nowa osobe</a>
     </small>
 </div>
 {% for osoba in osoby %}
 <article class="media content-section">
     <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="{{ url_for('onecontainer', container_id=container.container_id) }}">id:{{osoba.id_osoba}}</a>
-            <small class="text-muted">{{ osoba.nazwisko }}</small>
+            <a class="mr-2" href="">id:{{osoba.id_osoba}}</a>
+            <a class="mr-2" href="#">{{osoba.nazwisko}}</a>
+            <a class="mr-2" href="#">{{osoba.imie}}</a>
+            <small class="text-muted">email: {{ osoba.email }}</small>
         </div>
-        <h4><a class="article-title" href="{{ url_for('onecontainer', container_id=container.container_id) }}">{{
-            osoba.nazwisko }}</a></h4>
+        <!--<h4><a class="article-title" href="#">{{ osoba.nazwisko }}</a></h4>-->
         <p class="article-content">{{ osoba.opis }}</p>
     </div>
 </article>

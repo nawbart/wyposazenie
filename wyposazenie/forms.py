@@ -14,4 +14,16 @@ class DodajMiejsceForm(FlaskForm):
     opis = TextAreaField("Opis", validators=[DataRequired(), Length(min=3, max=150)])
 
     #tworzenie przycisku
-    submit = SubmitField("Dodaj")
+    submit = SubmitField("Dodaj miejsce")
+
+class DodajOsobeForm(FlaskForm):
+
+    imie = StringField("Imie", validators=[DataRequired(), Length(min=3, max=30)])
+
+    nazwisko = StringField("Nazwisko", validators=[DataRequired(), Length(min=3, max=30)])
+
+    email = StringField("Email", validators=[Email()])
+
+    opis = TextAreaField("Opis", validators=[DataRequired(), Length(min=3, max=150)])
+
+    submit = SubmitField("Dodaj osobe")
