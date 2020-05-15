@@ -1,7 +1,7 @@
 from wyposazenie import db
 
 #modeluje strukture bazy danych w sqlAlchemy, to jest potrzebne przy stworzeniu bazy danych
-#oraz przy interakcji z bazą danych, czyli w zapytaniach (np.select, update, insert)
+#oraz przy pracy z bazą danych, czyli w zapytaniach (np.select, update, insert)
 
 class Miejsca(db.Model):
     #na sztywno wymuszam,zeby tablica nazywala się MIEJSCA
@@ -41,3 +41,4 @@ class Urzadzenia(db.Model):
     id_osoba = db.Column(db.Integer, db.ForeignKey("osoby.id_osoba"), nullable=False)
     opis = db.Column(db.String(150))
     id_typ_urzadzenia = db.Column(db.Integer, db.ForeignKey("typy_urzadzen.id_typ_urzadzenia"), nullable=False)
+

@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+<legend class="border-bottom mb-4">Wszystkie miejsca</legend>
+<div>
+    <small class="text muted">
+        Add<a class="ml-2" href="#">Nowe miejsce</a>
+    </small>
+</div>
+{% for miejsce in miejsca %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <small class="text-muted">{{ miejsce.nazwa }}</small>
+        </div>
+        <p class="article-content">{{ miejsce.opis }}</p>
+    </div>
+</article>
+{% endfor %}
+{%  endblock content %}

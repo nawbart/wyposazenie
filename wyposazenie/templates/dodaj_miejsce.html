@@ -6,37 +6,37 @@
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">{{legend}}</legend>
 <!------------------------------------------------->
-<!--            for form.name                    -->
+<!--            for form.nazwa                    -->
                 <div class="form-group">
-                    {{ form.name.label(class="form-control-label") }}
-                    {% if form.name.errors %}
+                    {{ form.nazwa.label(class="form-control-label") }}
+                    {% if form.nazwa.errors %}
 <!--            if there is a error. -->
-                        {{ form.name(class="form-control form-control-lg is-invalid") }}
+                        {{ form.nazwa(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
-                            {% for error in form.name.errors %}
+                            {% for error in form.nazwa.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
 <!--            else if there aren't any errors. -->
-                        {{ form.name(class="form-control form-control-lg") }}
+                        {{ form.nazwa(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
 <!------------------------------------------------->
-<!--            for form.description             -->
+<!--            for form.opis             -->
                 <div class="form-group">
-                    {{ form.description.label(class="form-control-label") }}
-                    {% if form.description.errors %}
+                    {{ form.opis.label(class="form-control-label") }}
+                    {% if form.opis.errors %}
 <!--            if there is a error. -->
-                        {{ form.description(class="form-control form-control-lg is-invalid") }}
+                        {{ form.opis(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
-                            {% for error in form.description.errors %}
+                            {% for error in form.opis.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
 <!--            else if there aren't any errors. -->
-                        {{ form.description(class="form-control form-control-lg") }}
+                        {{ form.opis(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
 <!------------------------------------------------->
@@ -48,7 +48,7 @@
     </div>
     <div >
         <small class="text muted">
-            Already Have An account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+            Projekt Programistyczny
         </small>
     </div>
 
