@@ -3,7 +3,7 @@
 <legend class="border-bottom mb-4">Lista Typów Urządzeń:</legend>
 <div>
     <small class="text muted">
-        <a class="ml-2" href="{{ url_for('dodajosobe') }}">Dodaj typ urządzenia</a>
+        <a class="ml-2" href="{{ url_for('dodajtypurzadzenia') }}">Dodaj typ urządzenia</a>
     </small>
 </div>
 {% for typurzadzenia in typyurzadzen %}
@@ -13,7 +13,6 @@
             <a class="mr-2" href="">id:{{typurzadzenia.id_typ_urzadzenia}}</a>
             <a class="mr-2" href="#">{{typurzadzenia.nazwa}}</a>
         </div>
-        <!--<h4><a class="article-title" href="#">{{ osoba.nazwisko }}</a></h4>-->
         <p class="article-content">{{ typurzadzenia.opis }}</p>
     </div>
 </article>

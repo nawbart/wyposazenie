@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect, request
 from wyposazenie import app, db
-from wyposazenie.forms import DodajMiejsceForm, DodajOsobeForm
+from wyposazenie.forms import DodajMiejsceForm, DodajOsobeForm, DodajTypUrzadzeniaForm
 from wyposazenie.models import Miejsca, Osoby, TypyUrzadzen, Urzadzenia
 
 
@@ -78,6 +78,26 @@ def dodajosobe():
 def pokaztypyurzadzen():
     typyurzadzen_query = TypyUrzadzen.query.all()
     return render_template('pokaz_typyurzadzen.html', typyurzadzen=typyurzadzen_query)
+
+# CREATE, dodaj typy urzadzen
+@app.route("/typurzadzenia/new", methods=['GET', 'POST'])
+def dodajtypurzadzenia():
+    #tworze obiekt form ktory pochodzi z klasy forms.dodajTypUrzadzeniaForm
+    form = DodajTypUrzadzeniaForm()
+    #jesli nacisnieto przycisk submit
+    if form.validate_on_submit():
+        #tworze obiekt wiersz_typurzadzenia za pomoca konstruktora TypyUrzadzen z models.py
+        wiersz_typurzadzenia = TypyUrzadzen(nazwa=form.nazwa.data, opis=form.opis.data)
+        #dwie ponizsze linie to robie takiego inserta za pomoca sqlalchemy
+        db.session.add( wiersz_typurzadzenia)
+        db.session.commit()
+        # pokazuje komunikat jesli wszystko bedzie ok
+        flash(f'Dodano nowy wiersz do tabeli bazy danych.')
+        # przechodze do strony pokaz typyurzadzen gdzie widac wszstkie typyurzadzen
+        return redirect(url_for('pokaztypyurzadzen'))
+    return render_template('dodaj_typurzadzenia.html', title='Dodaj typ urzadzenia', form=form,
+                           legend="Dodaj typ urzadzenia")
+
 
 # ========= URZADZENIA ====================================================
 # READ, wyswietla wszystkie rekordy z tabeli "urzadzenia"

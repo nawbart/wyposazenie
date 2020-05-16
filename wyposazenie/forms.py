@@ -19,11 +19,24 @@ class DodajMiejsceForm(FlaskForm):
 class DodajOsobeForm(FlaskForm):
 
     imie = StringField("Imie", validators=[DataRequired(), Length(min=3, max=30)])
-
     nazwisko = StringField("Nazwisko", validators=[DataRequired(), Length(min=3, max=30)])
-
     email = StringField("Email", validators=[Email()])
-
     opis = TextAreaField("Opis", validators=[DataRequired(), Length(min=3, max=150)])
-
     submit = SubmitField("Dodaj osobe")
+
+class DodajTypUrzadzeniaForm(FlaskForm):
+
+    nazwa = StringField("Nazwa", validators=[DataRequired(), Length(min=3, max=30)])
+    opis = TextAreaField("Opis", validators=[DataRequired(), Length(min=3, max=150)])
+    submit = SubmitField("Dodaj typ urzadzenie")
+
+class DodajUrzadzenieForm(FlaskForm):
+
+    nazwa_urzadzenia = StringField("Nazwa", validators=[DataRequired(), Length(min=3, max=30)])
+    nr_seryjny = StringField("Nr. seryjny", validators=[DataRequired(), Length(min=3, max=60)])
+    id_miejsce = IntegerField("ID_miejsce", validators=[DataRequired()])
+    id_osoba = IntegerField("ID_osoba", validators=[DataRequired()])
+    opis = TextAreaField("Opis", validators=[DataRequired(), Length(min=3, max=150)])
+    id_typ_urzadzenia = IntegerField("ID_typ_urzadzenia", validators=[DataRequired()])
+
+    submit = SubmitField("Dodaj typ urzadzenie")
