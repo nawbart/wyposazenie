@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request
 from wyposazenie import app, db
 from wyposazenie.forms import DodajMiejsceForm, DodajOsobeForm
-from wyposazenie.models import Miejsca, Osoby
+from wyposazenie.models import Miejsca, Osoby, TypyUrzadzen
 
 
 @app.route("/")
@@ -45,7 +45,7 @@ def dodajmiejsce():
 
 
 # ========= OSOBY ====================================================
-# READ, wyswietla wszystkie rokordy z tabeli "osoby"
+# READ, wyswietla wszystkie rekordy z tabeli "osoby"
 @app.route("/pokazosoby")
 def pokazosoby():
     osoby_query = Osoby.query.all()
@@ -72,4 +72,10 @@ def dodajosobe():
                            legend="Dodaj osobe")
 
 
+# ========= TYPYURZADZEN ====================================================
+# READ, wyswietla wszystkie rekordy z tabeli "typy urzadzen"
+@app.route("/pokaztypyurzadzen")
+def pokaztypyurzadzen():
+    typyurzadzen_query = TypyUrzadzen.query.all()
+    return render_template('pokaz_typyurzadzen.html', typyurzadzen = typyurzadzen_query)
 

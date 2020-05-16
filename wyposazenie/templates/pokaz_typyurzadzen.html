@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<legend class="border-bottom mb-4">Typy Urządzeń:</legend>
+<div>
+    <small class="text muted">
+        <a class="ml-2" href="{{ url_for('dodajosobe') }}">Dodaj typ urządzenia</a>
+    </small>
+</div>
+{% for typurzadzenia in typyurzadzen %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="">id:{{typurzadzenia.id_typ_urzadzenia}}</a>
+            <a class="mr-2" href="#">{{typurzadzenia.nazwa}}</a>
+        </div>
+        <!--<h4><a class="article-title" href="#">{{ osoba.nazwisko }}</a></h4>-->
+        <p class="article-content">{{ typurzadzenia.opis }}</p>
+    </div>
+</article>
+{% endfor %}
+{%  endblock content %}
