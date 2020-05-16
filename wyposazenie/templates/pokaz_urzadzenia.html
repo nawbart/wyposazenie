@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<legend class="border-bottom mb-4">Lista Urządzeń:</legend>
+<div>
+    <small class="text muted">
+        <a class="ml-2" href="{{ url_for('dodajosobe') }}">Dodaj urządzenie</a>
+    </small>
+</div>
+{% for urzadzenie in urzadzenia %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="">id:{{urzadzenie.id_urzadzenie}}</a>
+            <a class="mr-2" href="#">{{urzadzenie.nr_seryjny}}</a>
+            <a class="mr-2" href="">id:{{urzadzenie.nazwa_urzadzenia}}</a>
+        </div>
+        <p class="article-content">{{ urzadzenie.opis }}</p>
+    </div>
+</article>
+{% endfor %}
+{%  endblock content %}

@@ -1,3 +1,16 @@
+RAPORT 3 PROTOYP (w trakcie realizacji)
+
+CO ZROBIŁEM:
+
+1. Umożliwiłem dodawanie wierszy do tabeli miejsca(forms.py, routes.py, pliki HTML)
+2. Umożliwiłem dodawanie wierszy do tabeli osoby(forms.py, routes.py, pliki HTML)
+3. Wyświatlanie wszystkich wierszy z tabel typy urzadzen i urzadzenia CRUD -> R (Read)
+4. Umożliwienie dodawania wierszy do tabeli typy urzadzen (forms.py, routes.py, pliki HTML)
+5. TODO: Umożliwienie dodawania wierszy do tabeli  urzadzenia(forms.py, routes.py, pliki HTML)
+CO PLANUJE ZROBIĆ:
+
+========================================================================
+
 RAPORT 2
 
 CO ZROBIŁEM:
