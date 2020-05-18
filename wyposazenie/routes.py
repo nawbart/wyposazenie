@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect, request
 from wyposazenie import app, db
-from wyposazenie.forms import DodajMiejsceForm, DodajOsobeForm, DodajTypUrzadzeniaForm
+from wyposazenie.forms import DodajMiejsceForm, DodajOsobeForm, DodajTypUrzadzeniaForm, DodajUrzadzenieForm
 from wyposazenie.models import Miejsca, Osoby, TypyUrzadzen, Urzadzenia
 
 
@@ -105,3 +105,22 @@ def dodajtypurzadzenia():
 def pokazurzadzenia():
     urzadzenia_query = Urzadzenia.query.all()
     return render_template('pokaz_urzadzenia.html', urzadzenia=urzadzenia_query)
+
+@app.route("/urzadzenie/new", methods=['GET', 'POST'])
+def dodajurzadzenie():
+    #tworze obiekt form ktory pochodzi z klasy forms.dodajUrzadzenieForm
+    form = DodajUrzadzenieForm()
+    #jesli nacisnieto przycisk submit
+    if form.validate_on_submit():
+        #tworze obiekt wiersz_urzadzenie za pomoca konstruktora Urzadzenia z models.py
+        wiersz_urzadzenie = Urzadzenia(nr_seryjny=form.nr_seryjny.data, nazwa_urzadzenia=form.nazwa_urzadzenia.data, id_miejsce=form.id_miejsce.data,
+                                       id_osoba=form.id_osoba.data, opis=form.opis.data, id_typ_urzadzenia=form.id_typ_urzadzenia.data)
+        #dwie ponizsze linie to robie takiego inserta za pomoca sqlalchemy
+        db.session.add( wiersz_urzadzenie)
+        db.session.commit()
+        # pokazuje komunikat jesli wszystko bedzie ok
+        flash(f'Dodano nowy wiersz do tabeli bazy danych.')
+        # przechodze do strony pokaz urzadzenia gdzie widac wszstkie urzadzenia
+        return redirect(url_for('pokazurzadzenia'))
+    return render_template('dodaj_urzadzenie.html', title='Dodaj urzadzenie', form=form,
+                           legend="Dodaj urzadzenie")
