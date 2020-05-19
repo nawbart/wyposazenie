@@ -7,8 +7,10 @@ from wyposazenie.models import Miejsca, Osoby, TypyUrzadzen, Urzadzenia
 @app.route("/")
 @app.route("/home")
 def home():
-    mq = Miejsca.query.all()
-    return render_template('home.html', miejsca=mq)
+    # mq = Miejsca.query.all()
+    # return render_template('home.html', miejsca=mq)
+    urzadzenia_query = Urzadzenia.query.all()
+    return render_template('pokaz_urzadzenia.html', urzadzenia=urzadzenia_query)
 
 # ========= MIEJSCA ====================================================
 # READ, wyswietla wszystkie rekordy z tabeli "miejsca".
@@ -17,10 +19,16 @@ def pokazmiejsca():
     miejsca_query = Miejsca.query.all()
     return render_template('pokaz_miejsca.html', miejsca=miejsca_query)
 
+# # READ, to show one record
+# @app.route("/container/<int:container_id>", methods=['GET', 'POST'])
+# def onecontainer(container_id):
+#     # daj container z tym id ale jesli nie ma tego id to zwroc 404 co oznacza ze strona nie istnieje.
+#     container_q = Containers.query.get_or_404(container_id)
+#     return render_template("container.html", container=container_q)
 
 # READ, wyswietla jeden wybrany rekord z tablicy "miejsca"
 @app.route("/pokazmiejsce/<int:id_miejsce>", methods=['GET', 'POST'])
-def pokaz_miejsce(id_miejsce):
+def pokazmiejsce(id_miejsce):
     miejsce_query = Miejsca.query.get_or_404(id_miejsce)
     return render_template("pokaz_miejsce.html", miejsce = miejsce_query )
 
