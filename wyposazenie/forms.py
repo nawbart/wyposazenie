@@ -24,6 +24,18 @@ class DodajMiejsceForm(FlaskForm):
             raise ValidationError("Ta nazwa miejsca jest już wykorzystana, wprowadź inną: ")
 
 
+class UpdateMiejsceForm(FlaskForm):
+    nazwa = StringField("Nazwa", validators=[DataRequired(), Length(min=3, max=30)])
+
+    opis = TextAreaField("Opis", validators=[DataRequired(), Length(min=3, max=150)])
+
+    submit = SubmitField("Update miejsce")
+
+    def validate_nazwa(self, nazwa):
+        miejsce_query = Miejsca.query.filter_by(nazwa=nazwa.data).first()
+        if miejsce_query:
+            raise ValidationError("Ta nazwa miejsca jest już wykorzystana, wprowadź inną: ")
+
 class DodajOsobeForm(FlaskForm):
 
     imie = StringField("Imie", validators=[DataRequired(), Length(min=3, max=30)])

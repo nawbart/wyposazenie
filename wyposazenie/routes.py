@@ -1,6 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request
 from wyposazenie import app, db
-from wyposazenie.forms import DodajMiejsceForm, DodajOsobeForm, DodajTypUrzadzeniaForm, DodajUrzadzenieForm
+from wyposazenie.forms import DodajMiejsceForm, DodajOsobeForm, DodajTypUrzadzeniaForm,\
+    DodajUrzadzenieForm, UpdateMiejsceForm
 from wyposazenie.models import Miejsca, Osoby, TypyUrzadzen, Urzadzenia
 
 
@@ -50,6 +51,49 @@ def dodajmiejsce():
         return redirect(url_for('pokazmiejsca'))
     return render_template('dodaj_miejsce.html', title='Dodaj miejsce', form=form,
                            legend="Dodaj miejce")
+
+# UPDATE, aktualizujemy wybrany wiersz z tabeli miejsca
+@app.route("/miejsce/<int:id_miejsce>/update", methods=["GET", "POST"])
+def update_miejsce(id_miejsce):
+    miejsce_query = Miejsca.query.get_or_404(id_miejsce)
+    form = UpdateMiejsceForm()
+    if form.validate_on_submit():
+        #po nacisnieciu przycisku dane z forms.py sa kopiowane do miejsce_query
+        # i nastepnie sa commitowane do bazy
+        miejsce_query.nazwa = form.nazwa.data
+        miejsce_query.opis = form.opis.data
+        db.session.commit()
+        # pokauje komunikat, ze sie udalo
+        flash("miejsce zostalo zaktualizowane", "success")
+        #powrot do pokaz_miejsce
+        return redirect(url_for("pokazmiejsce", id_miejsce=miejsce_query.id_miejsce))
+    #jesli chcemy byc pewni ze wypelnienie formy bylo przeprowadzone po żądaniu GET
+    elif request.method == "GET":
+        #te dwie linie wypelniaja formy wybranymi wartosciami z wybranego wiersza
+        form.nazwa.data = miejsce_query.nazwa
+        form.opis.data = miejsce_query.opis
+    return render_template("dodaj_miejsce.html", title="Update Miejsca", form=form,
+                           legend="Update Miejsca")
+
+# DELETE miejsce
+@app.route("/miejsce/<int:id_miejsce>/delete", methods=["POST"])
+def delete_miejsce(id_miejsce):
+    #sprawdza czy istnieje pobrany id_miejsce w bazie danych, jeśli nie ma to wykonuje sie metoda
+    # .get_or_404(...)
+    miejsce_query = Miejsca.query.get_or_404(id_miejsce, f"Nie ma danego wiersza z id{id_miejsce}"
+                                                                f" w tabeli miejsca.")
+    #sprawdza czy id_miejsce nie bylo wykorzystane w tabeli urzadzenia
+    urzadzenie_query = Urzadzenia.query.filter_by(id_miejsce=id_miejsce).first()
+    # jesli id_miejsce bylo wykorzystane w tabeli urzadzenia to nie mozna usunac wiersza.
+    if urzadzenie_query:
+        flash(f"Ten wiersz nie moze byc usuniety! Zostal uzyty w tabeli urzadzenia,"
+              f" id :{urzadzenie_query.id_miejsce}.","danger")
+    # w przeciwnym wypadku usuniecie jest mozliwe:
+    else:
+        db.session.delete(miejsce_query)
+        db.session.commit()
+        flash("Twoje miejsce zostalo usuniete", "success")
+    return redirect(url_for("pokazmiejsca"))
 
 
 # ========= OSOBY ====================================================
