@@ -1,10 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+<legend class="border-bottom mb-4">Miejsce</legend>
+<div>
+    <small class="text muted">
+        Add<a class="ml-2" href="{{ url_for('dodajmiejsce') }}">Dodaj miejsce</a>
+    </small>
+</div>
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="#">id:{{ miejsce.id_miejsce }}</a>
+            <small class="text-muted">{{ miejsce.nazwa }}</small>
+            <div>
+                <!-- sekcja odp za UPDATE -->
+                <a class="btn btn-secondary btn-sm mt-1 mb-1"
+                   href="{{ url_for('update_miejsce', id_miejsce=miejsce.id_miejsce) }}">Update</a>
+                <!-- koniec sekcji odp za UPDATE -->
+                <!-- sekcja odp za DELETE -->
+                <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">
+                    Delete
+                </button>
+                <!-- koniec sekcji odp za DELETE -->
+            </div>
+        </div>
+        <h2 class="article-title">{{ miejsce.nazwa }}</h2>
+        <p class="article-content">{{ miejsce.opis }}</p>
+    </div>
+</article>
+<!-- Modal -->
+<!-- sekcja odpowiedzialna za potwierdzenie usuwania DELETE -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete container?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button>-->
+                <form action="{{ url_for('delete_miejsce', id_miejsce=miejsce.id_miejsce) }}" method="POST">
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Koniec sekcji odpowiedzialnej za potwierdzenie usuwania DELETE -->
+{%  endblock content %}

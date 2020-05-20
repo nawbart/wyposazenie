@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">{{legend}}</legend>
+<!------------------------------------------------->
+
+<!--            dla form.nr_seryjny                  -->
+                <div class="form-group">
+                    {{ form.nr_seryjny .label(class="form-control-label") }}
+                    {% if form.nr_seryjny .errors %}
+<!--            if there is a error. -->
+                        {{ form.nr_seryjny (class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.nr_seryjny .errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+<!--            else if there aren't any errors. -->
+                        {{ form.nr_seryjny (class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+<!------------------------------------------------->
+<!--            for form.nazwa_urzadzenia             -->
+                <div class="form-group">
+                    {{ form.nazwa_urzadzenia.label(class="form-control-label") }}
+                    {% if form.nazwa_urzadzenia.errors %}
+<!--            if there is a error. -->
+                        {{ form.nazwa_urzadzenia(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.nazwa_urzadzenia.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+<!--            else if there aren't any errors. -->
+                        {{ form.nazwa_urzadzenia(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+<!------------------------------------------------->
+
+<!--             dla form.id_miejsce                    -->
+                <div class="form-group">
+                    {{ form.id_miejsce.label(class="form-control-label") }}
+                    {% if form.id_miejsce.errors %}
+<!--            if there is a error. -->
+                        {{ form.id_miejsce(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.id_miejsce.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+<!--            else if there aren't any errors. -->
+                        {{ form.id_miejsce(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+<!------------------------------------------------->
+
+<!--           for form.id_osoba             -->
+                <div class="form-group">
+                    {{ form.id_osoba .label(class="form-control-label") }}
+                    {% if form.id_osoba .errors %}
+<!--            if there is a error. -->
+                        {{ form.id_osoba (class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.id_osoba .errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+<!--            else if there aren't any errors. -->
+                        {{ form.id_osoba (class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+ <!------------------------------------------------->
+
+<!--         for form.opis             -->
+                <div class="form-group">
+                    {{ form.opis.label(class="form-control-label") }}
+                    {% if form.opis.errors %}
+<!--            if there is a error. -->
+                        {{ form.opis(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.opis.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+<!--            else if there aren't any errors. -->
+                        {{ form.opis(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+<!------------------------------------------------->
+
+<!--           for form.id_typ_urzadzenia             -->
+                <div class="form-group">
+                    {{ form.id_typ_urzadzenia.label(class="form-control-label") }}
+                    {% if form.id_typ_urzadzenia.errors %}
+<!--            if there is a error. -->
+                        {{ form.id_typ_urzadzenia(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.id_typ_urzadzenia.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+<!--            else if there aren't any errors. -->
+                        {{ form.id_typ_urzadzenia(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+<!------------------------------------------------->
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+    <div >
+        <small class="text muted">
+            Projekt Programistyczny
+        </small>
+    </div>
+
+{%  endblock content %}

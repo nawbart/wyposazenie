@@ -10,7 +10,7 @@
 <article class="media content-section">
     <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="#">id:{{miejsce.id_miejsce}}, </a>
+            <a class="mr-2" href="{{ url_for('pokazmiejsce', id_miejsce=miejsce.id_miejsce) }}">id:{{miejsce.id_miejsce}}, </a>
             <a class="mr-2" href="#">nazwa: {{miejsce.nazwa}}</a>
 <!--            <small class="text-muted">{{ miejsce.nazwa }}</small>-->
         </div>

@@ -16,6 +16,26 @@ class DodajMiejsceForm(FlaskForm):
     #tworzenie przycisku
     submit = SubmitField("Dodaj miejsce")
 
+    # aby przed dodaniem rekordu do bazy sprawdzac czy wartosc pola unikalnego nie została ponownie wpisana
+    # tworzymy taką funkcje sprawdzającą dla pola nazwa
+    def validate_nazwa(self, nazwa):
+        miejsce_query = Miejsca.query.filter_by(nazwa=nazwa.data).first()
+        if miejsce_query:
+            raise ValidationError("Ta nazwa miejsca jest już wykorzystana, wprowadź inną: ")
+
+
+class UpdateMiejsceForm(FlaskForm):
+    nazwa = StringField("Nazwa", validators=[DataRequired(), Length(min=3, max=30)])
+
+    opis = TextAreaField("Opis", validators=[DataRequired(), Length(min=3, max=150)])
+
+    submit = SubmitField("Update miejsce")
+
+    def validate_nazwa(self, nazwa):
+        miejsce_query = Miejsca.query.filter_by(nazwa=nazwa.data).first()
+        if miejsce_query:
+            raise ValidationError("Ta nazwa miejsca jest już wykorzystana, wprowadź inną: ")
+
 class DodajOsobeForm(FlaskForm):
 
     imie = StringField("Imie", validators=[DataRequired(), Length(min=3, max=30)])
@@ -30,6 +50,14 @@ class DodajTypUrzadzeniaForm(FlaskForm):
     opis = TextAreaField("Opis", validators=[DataRequired(), Length(min=3, max=150)])
     submit = SubmitField("Dodaj typ urzadzenie")
 
+    # aby przed dodaniem rekordu do bazy sprawdzac czy wartosc pola unikalnego nie została ponownie wpisana
+    # tworzymy taką funkcje sprawdzającą dla pola nazwa
+    def validate_nazwa(self, nazwa):
+        typurzadzenia_query = TypyUrzadzen.query.filter_by(nazwa=nazwa.data).first()
+        if typurzadzenia_query:
+            raise ValidationError("Ta nazwa typu urządzenia jest już wykorzystana, wprowadź inną: ")
+
+
 class DodajUrzadzenieForm(FlaskForm):
 
     nazwa_urzadzenia = StringField("Nazwa", validators=[DataRequired(), Length(min=3, max=30)])
@@ -40,3 +68,10 @@ class DodajUrzadzenieForm(FlaskForm):
     id_typ_urzadzenia = IntegerField("ID_typ_urzadzenia", validators=[DataRequired()])
 
     submit = SubmitField("Dodaj typ urzadzenie")
+
+    # aby przed dodaniem rekordu do bazy sprawdzac czy wartosc pola unikalnego nie została ponownie wpisana
+    # tworzymy taką funkcje sprawdzającą dla pola nazwa
+    def validate_nazwa_urzadzenia(self, nazwa_urzadzenia):
+        nazwa_urzadzenia_query = Urzadzenia.query.filter_by(nazwa_urzadzenia=nazwa_urzadzenia.data).first()
+        if nazwa_urzadzenia_query:
+            raise ValidationError("Ta nazwa urządzenia jest już wykorzystana, wprowadź inną: ")

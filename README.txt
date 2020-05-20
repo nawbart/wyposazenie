@@ -6,9 +6,17 @@ CO ZROBIŁEM:
 2. Umożliwiłem dodawanie wierszy do tabeli osoby(forms.py, routes.py, pliki HTML)
 3. Wyświatlanie wszystkich wierszy z tabel typy urzadzen i urzadzenia CRUD -> R (Read)
 4. Umożliwienie dodawania wierszy do tabeli typy urzadzen (forms.py, routes.py, pliki HTML)
-5. TODO: Umożliwienie dodawania wierszy do tabeli  urzadzenia(forms.py, routes.py, pliki HTML)
+5. Umożliwienie dodawania wierszy do tabeli  urzadzenia(forms.py, routes.py, pliki HTML)
+6. Dla pól tabel bazy danych, które mają atrybut unikalny(unique) dodałem sprawdzanie
+   wprowadzania informacji w forms.py, metoda def validate_...
+7. Możliwość wybrania konkretnego wiersza z tabeli miejsca i wyswietlenie tylko danych
+   dotyczacych tego wiersza
+8. Dodanie przycisku delete i update przy przegladaniu wybranego miejsca. Zakodowanie mozliwosci
+   usuniecia wybranego wiersza pod warunkiem, że nie byl wykorzystany w tabeli urzadzenia.
+   Zakodowanie mozliwosci aktualizacji - update wybranego wiersza.
 CO PLANUJE ZROBIĆ:
-
+1. umozliwienie wybrania konkretnego wiersza i wyswietlenie jego wszystkich pol dla tabeli osoby
+2. umozliwienie wybrania konkretnego wiersza i wyswietlenie jego wszystkich pol dla tabeli typy_urzadzen
 ========================================================================
 
 RAPORT 2
@@ -50,3 +58,7 @@ Najpierw w Git stworzymy swoje repozytorium.
 Nastepnie za pomocą pythona tworze projekt i jego strukturę tzn nazwę i jakie bedzie miał pliki i co w jakich plikach bede programować.
  
 Nastepnie Kolejna rzecz to za pomoca pythona i za pomocą modulu SQLAlchemy będę  tworzyć model tabeli bazy danych tak by aplikacja wiedziała jak wyglada baza danych i aby za pomoca aplikacji mozna stworzyć bazę danych i pozniej z nia sie komunikowac, tzn zapisywac, odczytywac, aktualizowac, usuwac tzw. operacje CRUD (Create, Read, Update, Delete).
+
+
+APLIKACJA WZOROWAŁA SIĘ NA SZKOLENIU:
+https://www.youtube.com/results?search_query=corey+schafer+flask
