@@ -1,20 +1,20 @@
 {% extends "layout.html" %}
 {% block content %}
-<legend class="border-bottom mb-4">Miejsce</legend>
+<legend class="border-bottom mb-4">Osoba</legend>
 <div>
     <small class="text muted">
-        Add<a class="ml-2" href="{{ url_for('dodajmiejsce') }}">Dodaj miejsce</a>
+        Add<a class="ml-2" href="{{ url_for('dodajosobe') }}">Dodaj osobe</a>
     </small>
 </div>
 <article class="media content-section">
     <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="#">id:{{ miejsce.id_miejsce }}</a>
-            <!--<small class="text-muted">{{ miejsce.nazwa }}</small>-->
+            <a class="mr-2" href="#">id:{{ osoba.id_osoba }}</a>
+            <small class="text-muted">{{ osoba.email}}</small>
             <div>
                 <!-- sekcja odp za UPDATE -->
                 <a class="btn btn-secondary btn-sm mt-1 mb-1"
-                   href="{{ url_for('update_miejsce', id_miejsce=miejsce.id_miejsce) }}">Update</a>
+                   href="{{ url_for('update_osoba', id_osoba=osoba.id_osoba) }}">Update</a>
                 <!-- koniec sekcji odp za UPDATE -->
                 <!-- sekcja odp za DELETE -->
                 <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">
@@ -23,8 +23,8 @@
                 <!-- koniec sekcji odp za DELETE -->
             </div>
         </div>
-        <h2 class="article-title">{{ miejsce.nazwa }}</h2>
-        <p class="article-content">{{ miejsce.opis }}</p>
+        <h2 class="article-title">{{ osoba.nazwisko }} {{ osoba.imie }}</h2>
+        <p class="article-content">{{ osoba.opis }}</p>
     </div>
 </article>
 <!-- Modal -->
@@ -45,7 +45,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <!-- <button type="button" class="btn btn-primary">Save changes</button>-->
-                <form action="{{ url_for('delete_miejsce', id_miejsce=miejsce.id_miejsce) }}" method="POST">
+                <form action="{{ url_for('delete_osoba', id_osoba=osoba.id_osoba) }}" method="POST">
                     <input class="btn btn-danger" type="submit" value="Delete">
                 </form>
             </div>
