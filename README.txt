@@ -1,22 +1,47 @@
-RAPORT 3 PROTOYP (w trakcie realizacji)
+RAPORT 3 
 
 CO ZROBIŁEM:
 
-1. Umożliwiłem dodawanie wierszy do tabeli miejsca(forms.py, routes.py, pliki HTML)
-2. Umożliwiłem dodawanie wierszy do tabeli osoby(forms.py, routes.py, pliki HTML)
-3. Wyświatlanie wszystkich wierszy z tabel typy urzadzen i urzadzenia CRUD -> R (Read)
-4. Umożliwienie dodawania wierszy do tabeli typy urzadzen (forms.py, routes.py, pliki HTML)
-5. Umożliwienie dodawania wierszy do tabeli  urzadzenia(forms.py, routes.py, pliki HTML)
+1. Umożliwiłem dodawanie wierszy do tabeli miejsca(forms.py, routes.py, pliki HTML).
+2. Umożliwiłem dodawanie wierszy do tabeli osoby(forms.py, routes.py, pliki HTML).
+3. Wyświatlanie wszystkich wierszy z tabel typy urzadzen i urzadzenia CRUD -> R (Read).
+4. Umożliwienie dodawania wierszy do tabeli typy urzadzen (forms.py, routes.py, pliki HTML).
+5. Umożliwienie dodawania wierszy do tabeli  urzadzenia(forms.py, routes.py, pliki HTML).
 6. Dla pól tabel bazy danych, które mają atrybut unikalny(unique) dodałem sprawdzanie
    wprowadzania informacji w forms.py, metoda def validate_...
 7. Możliwość wybrania konkretnego wiersza z tabeli miejsca i wyswietlenie tylko danych
-   dotyczacych tego wiersza
-8. Dodanie przycisku delete i update przy przegladaniu wybranego miejsca. Zakodowanie mozliwosci
+   dotyczacych tego wiersza.
+8. Dodanie przycisku "delete" i "update" przy przegladaniu wybranego miejsca. Mozliwosc
    usuniecia wybranego wiersza pod warunkiem, że nie byl wykorzystany w tabeli urzadzenia.
-   Zakodowanie mozliwosci aktualizacji - update wybranego wiersza.
-CO PLANUJE ZROBIĆ:
-1. umozliwienie wybrania konkretnego wiersza i wyswietlenie jego wszystkich pol dla tabeli osoby
-2. umozliwienie wybrania konkretnego wiersza i wyswietlenie jego wszystkich pol dla tabeli typy_urzadzen
+   Mozliwosci aktualizacji - update wybranego wiersza.
+9. Możliwość wybrania konkretnego wiersza z tabeli osoby i wyswietlenie tylko danych
+   dotyczacych tego wiersza.
+10.Możliwość wybrania konkretnego wiersza z tabeli typy_urzadzen i wyswietlenie tylko danych
+   dotyczacych tego wiersza.
+11.Mozliwosci usuniecia wybranego wiersza dla tabeli osoby - przycisk "delete" przy 
+   wyświetlaniu danych wybranego wiersza.
+12.Mozliwosci usuniecia wybranego wiersza dla tabeli typy_urzadzen - przycisk "delete" przy 
+   wyświetlaniu danych wybranego wiersza.
+13.Mozliwosci aktualizacji/zmiany danych wybranego wiersza dla tabeli osoby - przycisk "update".
+14.Mozliwosci aktualizacji/zmiany danych wybranego wiersza dla tabeli typy_urzadzen - przycisk "update".
+
+
+CZEGO NIE ZROBIŁEM / CO PLANUJE ZROBIĆ:
+1. Umozliwienie wybrania konkretnego wiersza i wyswietlenie jego wszystkich pol dla tabeli urzadzenia
+2. Mozliwosci usuniecia wybranego wiersza dla tabeli urzadzenia - przycisk "delete" przy 
+   wyświetlaniu danych wybranego wiersza.
+3. Mozliwosci aktualizacji/zmiany danych wybranego wiersza dla tabeli urzadzenia - przycisk "update".
+4. Przy wprowadzaniu nowego wiersza do tabeli "urzadzenia" podczas wypelniania pola id_miejsce, 
+   ktore jest typu "ForeignKey" obecnie wpisuje tam liczbe czyli ID, moim zadaniem bedzie odwolanie sie
+   do tablicy zrodlowej "miejsca" i wyswietlenie z niej pól "nazwa" i wybranie z niej konkretnego miejsca.
+5. Przy wprowadzaniu nowego wiersza do tabeli "urzadzenia" podczas wypelniania pola id_osoba, 
+   ktore jest typu "ForeignKey" obecnie wpisuje tam liczbe czyli ID, moim zadaniem bedzie odwolanie sie
+   do tablicy zrodlowej "osoby" i wyswietlenie z niej pól "nazwisko", "imie" i wybranie z niej konkretnej osoby.
+6. Przy wprowadzaniu nowego wiersza do tabeli "urzadzenia" podczas wypelniania pola id_typ_urzadzenia, 
+   ktore jest typu "ForeignKey" obecnie wpisuje tam liczbe czyli ID, moim zadaniem bedzie odwolanie sie
+   do tablicy zrodlowej "typy_urzadzen" i wyswietlenie z niej pól "nazwa" i wybranie z niej konkretnego typu urzadzenia.
+
+
 ========================================================================
 
 RAPORT 2
@@ -57,7 +82,7 @@ Sprzet bedzie mial takze mozliwosć  przypisania go do jakiego typu urzadzeń na
 Najpierw w Git stworzymy swoje repozytorium.
 Nastepnie za pomocą pythona tworze projekt i jego strukturę tzn nazwę i jakie bedzie miał pliki i co w jakich plikach bede programować.
  
-Nastepnie Kolejna rzecz to za pomoca pythona i za pomocą modulu SQLAlchemy będę  tworzyć model tabeli bazy danych tak by aplikacja wiedziała jak wyglada baza danych i aby za pomoca aplikacji mozna stworzyć bazę danych i pozniej z nia sie komunikowac, tzn zapisywac, odczytywac, aktualizowac, usuwac tzw. operacje CRUD (Create, Read, Update, Delete).
+Nastepnie kolejna rzecz to za pomoca pythona i za pomocą modulu SQLAlchemy będę  tworzyć model tabeli bazy danych tak by aplikacja wiedziała jak wyglada baza danych i aby za pomoca aplikacji mozna stworzyć bazę danych i pozniej z nia sie komunikowac, tzn zapisywac, odczytywac, aktualizowac, usuwac tzw. operacje CRUD (Create, Read, Update, Delete).
 
 
 APLIKACJA WZOROWAŁA SIĘ NA SZKOLENIU:
