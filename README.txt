@@ -24,13 +24,17 @@ CO ZROBIŁEM:
    wyświetlaniu danych wybranego wiersza.
 13.Mozliwosci aktualizacji/zmiany danych wybranego wiersza dla tabeli osoby - przycisk "update".
 14.Mozliwosci aktualizacji/zmiany danych wybranego wiersza dla tabeli typy_urzadzen - przycisk "update".
+15. Umozliwienie wybrania konkretnego wiersza i wyswietlenie jego wszystkich pol dla tabeli
+   urzadzenia.
+16. Mozliwosci usuniecia wybranego wiersza dla tabeli urzadzenia - przycisk "delete" przy
+   wyświetlaniu danych wybranego wiersza.
+17. Mozliwosci aktualizacji/zmiany danych wybranego wiersza dla tabeli urzadzenia - przycisk "update".
 
 
 CZEGO NIE ZROBIŁEM / CO PLANUJE ZROBIĆ:
-1. Umozliwienie wybrania konkretnego wiersza i wyswietlenie jego wszystkich pol dla tabeli urzadzenia
-2. Mozliwosci usuniecia wybranego wiersza dla tabeli urzadzenia - przycisk "delete" przy 
-   wyświetlaniu danych wybranego wiersza.
-3. Mozliwosci aktualizacji/zmiany danych wybranego wiersza dla tabeli urzadzenia - przycisk "update".
+
+
+
 4. Przy wprowadzaniu nowego wiersza do tabeli "urzadzenia" podczas wypelniania pola id_miejsce, 
    ktore jest typu "ForeignKey" obecnie wpisuje tam liczbe czyli ID, moim zadaniem bedzie odwolanie sie
    do tablicy zrodlowej "miejsca" i wyswietlenie z niej pól "nazwa" i wybranie z niej konkretnego miejsca.
