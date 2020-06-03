@@ -10,9 +10,9 @@
 <article class="media content-section">
     <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="">id:{{urzadzenie.id_urzadzenie}}</a>
-            <a class="mr-2">{{urzadzenie.nr_seryjny}}</a>
-            <a class="mr-2">id:{{urzadzenie.nazwa_urzadzenia}}</a>
+            <a class="mr-2" href="{{ url_for('pokazurzadzenie', id_urzadzenie=urzadzenie.id_urzadzenie) }}">id:{{urzadzenie.id_urzadzenie}}</a>
+            <a class="mr-2">nr. ser: {{urzadzenie.nr_seryjny}}</a>
+            <a class="mr-2">nazwa: {{urzadzenie.nazwa_urzadzenia}}</a>
         </div>
         <p class="article-content">{{ urzadzenie.opis }}</p>
     </div>

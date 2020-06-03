@@ -1,7 +1,8 @@
 from flask import render_template, url_for, flash, redirect, request
 from wyposazenie import app, db
 from wyposazenie.forms import DodajMiejsceForm, DodajOsobeForm, DodajTypUrzadzeniaForm,\
-    DodajUrzadzenieForm, UpdateMiejsceForm, UpdateOsobaForm, UpdateTypUrzadzeniaForm
+    DodajUrzadzenieForm, UpdateMiejsceForm, UpdateOsobaForm, UpdateTypUrzadzeniaForm, \
+    UpdateUrzadzenieForm
 from wyposazenie.models import Miejsca, Osoby, TypyUrzadzen, Urzadzenia
 
 
@@ -263,6 +264,13 @@ def pokazurzadzenia():
     urzadzenia_query = Urzadzenia.query.all()
     return render_template('pokaz_urzadzenia.html', urzadzenia=urzadzenia_query)
 
+# READ, wyswietla jeden wybrany rekord z tablicy "urzadzenia"
+@app.route("/pokazurzadzenie/<int:id_urzadzenie>", methods=['GET', 'POST'])
+def pokazurzadzenie(id_urzadzenie):
+    urzadzenie_query = Urzadzenia.query.get_or_404(id_urzadzenie)
+    return render_template("pokaz_urzadzenie.html", urzadzenie = urzadzenie_query )
+
+
 @app.route("/urzadzenie/new", methods=['GET', 'POST'])
 def dodajurzadzenie():
     #tworze obiekt form ktory pochodzi z klasy forms.dodajUrzadzenieForm
@@ -281,3 +289,47 @@ def dodajurzadzenie():
         return redirect(url_for('pokazurzadzenia'))
     return render_template('dodaj_urzadzenie.html', title='Dodaj urzadzenie', form=form,
                            legend="Dodaj urzadzenie")
+
+# UPDATE, aktualizujemy wybrany wiersz z tabeli urzadzenia
+@app.route("/urzadzenie/<int:id_urzadzenie>/update", methods=["GET", "POST"])
+def update_urzadzenie(id_urzadzenie):
+    urzadzenie_query = Urzadzenia.query.get_or_404(id_urzadzenie)
+    form = UpdateUrzadzenieForm()
+    if form.validate_on_submit():
+        #po nacisnieciu przycisku dane z forms.py sa kopiowane do urzadzenia_query
+        # i nastepnie sa commitowane do bazy
+        urzadzenie_query.nazwa_urzadzenia = form.nazwa_urzadzenia.data
+        urzadzenie_query.nr_seryjny = form.nr_seryjny.data
+        urzadzenie_query.id_miejsce = form.id_miejsce.data
+        urzadzenie_query.id_osoba = form.id_osoba.data
+        urzadzenie_query.opis = form.opis.data
+        urzadzenie_query.id_typ_urzadzenia = form.id_typ_urzadzenia.data
+        db.session.commit()
+        # pokazuje komunikat, ze sie udalo
+        flash("urzadzenie zostalo zaktualizowane", "success")
+        #powrot do pokaz_urzadzenie
+        return redirect(url_for("pokazurzadzenie", id_urzadzenie=urzadzenie_query.id_urzadzenie))
+    #jesli chcemy byc pewni ze wypelnienie formy bylo przeprowadzone po żądaniu GET
+    elif request.method == "GET":
+        #te dwie linie wypelniaja formy wybranymi wartosciami z wybranego wiersza
+        form.nazwa_urzadzenia.data = urzadzenie_query.nazwa_urzadzenia
+        form.nr_seryjny.data = urzadzenie_query.nr_seryjny
+        form.id_miejsce.data = urzadzenie_query.id_miejsce
+        form.id_osoba.data = urzadzenie_query.id_osoba
+        form.opis.data = urzadzenie_query.opis
+        form.id_typ_urzadzenia.data = urzadzenie_query.id_typ_urzadzenia
+
+    return render_template("dodaj_urzadzenie.html", title="Update Urzadzenie", form=form,
+                           legend="Update Urzadzenie")
+
+# DELETE urzadzenie
+@app.route("/urzadzenie/<int:id_urzadzenie>/delete", methods=["POST"])
+def delete_urzadzenie(id_urzadzenie):
+    #sprawdza czy istnieje pobrany id_urzadzenie w tab. urzadzenia, jeśli nie ma to wykonuje sie metoda
+    # .get_or_404(...)
+    urzadzenie_query = Urzadzenia.query.get_or_404(id_urzadzenie, f"Nie ma danego wiersza z id{id_urzadzenie}"
+                                                                f" w tabeli osoby.")
+    db.session.delete(urzadzenie_query)
+    db.session.commit()
+    flash("Urzadzenie zostalo usuniete", "success")
+    return redirect(url_for("pokazurzadzenia"))
