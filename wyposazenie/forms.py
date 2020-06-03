@@ -85,6 +85,7 @@ class DodajUrzadzenieForm(FlaskForm):
     nazwa_urzadzenia = StringField("Nazwa", validators=[DataRequired(), Length(min=3, max=30)])
     nr_seryjny = StringField("Nr. seryjny", validators=[DataRequired(), Length(min=3, max=60)])
     id_miejsce = IntegerField("ID_miejsce", validators=[DataRequired()])
+    #id_miejsce_fk = SelectField("miejsce nazwa", coerce = int)
     id_osoba = IntegerField("ID_osoba", validators=[DataRequired()])
     opis = TextAreaField("Opis", validators=[DataRequired(), Length(min=3, max=150)])
     id_typ_urzadzenia = IntegerField("ID_typ_urzadzenia", validators=[DataRequired()])
